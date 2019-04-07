@@ -8,7 +8,17 @@ SECTIONS {
 
     .text :
     {
+        KEEP(* (.vectable))
         * (.text)
     } >rom
     _etext=.;
+    .data : AT(_etext)
+    {
+        . = ALIGN(4);
+        _sidata = .;
+        * (.data)
+        . = ALIGN(4);
+        _sedata = .;
+    } > ram
+
 }
