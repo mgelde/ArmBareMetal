@@ -1,17 +1,15 @@
 .syntax unified
 .thumb
 
-.section .vectable
-//TODO stack pointer
-.long 0x20001000
-//plus 1 because of thumb mode
-.long _start + 1
-
-
 .data
 .long 0xdeadbeef
 .long 0xaaaaaaaa
 .long 0xbbbbbbbb
+
+.global main
+
+
+.global _start
 
 .text
 _start:
@@ -30,5 +28,4 @@ loop:
 end:
     MOV R4, 0xabababab
 forever:
-    b forever
-.global _start
+    bl main
