@@ -12,6 +12,7 @@
 .global _start
 
 .text
+.thumb_func
 _start:
     LDR R0, =_etext
     LDR R1, =_sidata
